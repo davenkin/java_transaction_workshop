@@ -8,4 +8,5 @@ package davenkin;
  * To change this template use File | Settings | File Templates.
  */
 public interface BankService {
+    public void transfer(int amount);
 }

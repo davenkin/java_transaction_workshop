@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>davenkin</groupId>
-  <artifactId>java_transaction_learning</artifactId>
+  <artifactId>java_transaction_workshop</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>java_transaction_learning</name>
+  <name>java_transaction_workshop</name>
   <url>http://maven.apache.org</url>
 
     <properties>
