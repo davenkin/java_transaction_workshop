@@ -1,6 +1,11 @@
 *.class
-
+target/
+db-hsql/
+*.iml
+*.iws
+*.ipr
 # Package Files #
 *.jar
 *.war
 *.ear
+
