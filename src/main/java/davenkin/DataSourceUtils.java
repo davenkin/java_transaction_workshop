@@ -11,9 +11,9 @@ import org.apache.commons.dbcp.BasicDataSource;
 
 public class DataSourceUtils
 {
-    public static BasicDataSource createDataSource()
-    {
-        BasicDataSource dataSource = new BasicDataSource();
+
+    private static final BasicDataSource dataSource = new BasicDataSource();
+    static {
         dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
         dataSource.setUsername("SA");
         dataSource.setPassword("");
@@ -21,6 +21,11 @@ public class DataSourceUtils
         dataSource.setMaxActive(3);
         dataSource.setMaxIdle(2);
         dataSource.setInitialSize(2);
+    }
+
+    public static BasicDataSource createDataSource()
+    {
+
         return dataSource;
     }
 
