@@ -13,10 +13,10 @@ import java.sql.SQLException;
  * Time: 8:01 PM
  * To change this template use File | Settings | File Templates.
  */
-public class InsuranceDao {
+public class FailureInsuranceDao {
     private DataSource dataSource;
 
-    public InsuranceDao(DataSource dataSource){
+    public FailureInsuranceDao(DataSource dataSource){
         this.dataSource = dataSource;
     }
 

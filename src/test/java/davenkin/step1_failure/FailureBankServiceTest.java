@@ -1,11 +1,8 @@
 package davenkin.step1_failure;
 
-import davenkin.DataSourceUtils;
 import davenkin.TestFixture;
-import org.apache.commons.dbcp.BasicDataSource;
 import org.junit.Test;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static junit.framework.Assert.assertEquals;
@@ -20,12 +17,12 @@ import static junit.framework.Assert.assertEquals;
 public class FailureBankServiceTest extends TestFixture {
     @Test
     public void transferSuccess() throws SQLException {
-        BankDao bankDao = new BankDao(dataSource);
-        InsuranceDao insuranceDao = new InsuranceDao(dataSource);
+        FailureBankDao failureBankDao = new FailureBankDao(dataSource);
+        FailureInsuranceDao failureInsuranceDao = new FailureInsuranceDao(dataSource);
 
         FailureBankService bankService = new FailureBankService(dataSource);
-        bankService.setBankDao(bankDao);
-        bankService.setInsuranceDao(insuranceDao);
+        bankService.setFailureBankDao(failureBankDao);
+        bankService.setFailureInsuranceDao(failureInsuranceDao);
 
         bankService.transfer(1234, 5678,200);
 
@@ -36,12 +33,12 @@ public class FailureBankServiceTest extends TestFixture {
 
     @Test
     public void transferFailure() throws SQLException {
-        BankDao bankDao = new BankDao(dataSource);
-        InsuranceDao insuranceDao = new InsuranceDao(dataSource);
+        FailureBankDao failureBankDao = new FailureBankDao(dataSource);
+        FailureInsuranceDao failureInsuranceDao = new FailureInsuranceDao(dataSource);
 
         FailureBankService bankService = new FailureBankService(dataSource);
-        bankService.setBankDao(bankDao);
-        bankService.setInsuranceDao(insuranceDao);
+        bankService.setFailureBankDao(failureBankDao);
+        bankService.setFailureInsuranceDao(failureInsuranceDao);
 
         bankService.transfer(1234, 56780,200);
 

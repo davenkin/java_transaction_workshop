@@ -1,6 +1,5 @@
-package davenkin.step1_failure;
+package davenkin.step2_ugly;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,19 +9,11 @@ import java.sql.SQLException;
  * Created with IntelliJ IDEA.
  * User: davenkin
  * Date: 2/7/13
- * Time: 7:19 PM
+ * Time: 8:20 PM
  * To change this template use File | Settings | File Templates.
  */
-public class BankDao {
-    private DataSource dataSource;
-
-    public BankDao(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
-
-    public void withdraw(int bankId, int amount) throws SQLException {
-        Connection connection = dataSource.getConnection();
+public class UglyBankDao {
+    public void withdraw(int bankId, int amount, Connection connection) throws SQLException {
         PreparedStatement selectStatement = connection.prepareStatement("SELECT BANK_AMOUNT FROM BANK_ACCOUNT WHERE BANK_ID = ?");
         selectStatement.setInt(1, bankId);
         ResultSet resultSet = selectStatement.executeQuery();
@@ -39,7 +30,5 @@ public class BankDao {
         updateStatement.execute();
 
         updateStatement.close();
-        connection.close();
-
     }
 }

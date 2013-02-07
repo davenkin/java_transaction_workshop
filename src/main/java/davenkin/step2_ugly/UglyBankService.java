@@ -1,24 +1,24 @@
-package davenkin.step1_failure;
+package davenkin.step2_ugly;
 
 import davenkin.BankService;
-import org.apache.commons.dbcp.BasicDataSource;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
  * User: davenkin
- * Date: 2/5/13
- * Time: 10:07 PM
+ * Date: 2/7/13
+ * Time: 8:17 PM
  * To change this template use File | Settings | File Templates.
  */
-public class FailureBankService implements BankService{
-    private FailureBankDao failureBankDao;
-    private FailureInsuranceDao failureInsuranceDao;
-    private BasicDataSource dataSource;
+public class UglyBankService implements BankService {
+    private DataSource dataSource;
+    private UglyBankDao uglyBankDao;
+    private UglyInsuranceDao uglyInsuranceDao;
 
-    public FailureBankService(BasicDataSource dataSource) {
+    public UglyBankService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
@@ -28,8 +28,8 @@ public class FailureBankService implements BankService{
             connection = dataSource.getConnection();
             connection.setAutoCommit(false);
 
-            failureBankDao.withdraw(fromId, amount);
-            failureInsuranceDao.deposit(toId, amount);
+            uglyBankDao.withdraw(fromId, amount, connection);
+            uglyInsuranceDao.deposit(toId, amount, connection);
 
             connection.commit();
         } catch (Exception e) {
@@ -42,11 +42,11 @@ public class FailureBankService implements BankService{
         }
     }
 
-    public void setFailureBankDao(FailureBankDao failureBankDao) {
-        this.failureBankDao = failureBankDao;
+    public void setUglyBankDao(UglyBankDao uglyBankDao) {
+        this.uglyBankDao = uglyBankDao;
     }
 
-    public void setFailureInsuranceDao(FailureInsuranceDao failureInsuranceDao) {
-        this.failureInsuranceDao = failureInsuranceDao;
+    public void setUglyInsuranceDao(UglyInsuranceDao uglyInsuranceDao) {
+        this.uglyInsuranceDao = uglyInsuranceDao;
     }
 }
