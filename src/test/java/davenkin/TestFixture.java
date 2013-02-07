@@ -1,12 +1,9 @@
 package davenkin;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.junit.After;
 import org.junit.Before;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,19 +20,39 @@ public class TestFixture {
     public void setUp() throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
-        statement.execute("INSERT INTO BANK_ACCOUNT VALUES (1234, 500000);");
-        statement.execute("INSERT INTO INSURANCE_ACCOUNT VALUES (5678, 100000);");
+        statement.execute("DELETE FROM BANK_ACCOUNT;");
+        statement.execute("DELETE FROM INSURANCE_ACCOUNT;");
+
+        statement.execute("INSERT INTO BANK_ACCOUNT VALUES (1234, 1000);");
+        statement.execute("INSERT INTO INSURANCE_ACCOUNT VALUES (5678, 1000);");
         statement.close();
         connection.close();
     }
 
-    @After
-    public void cleanUp() throws SQLException {
+    protected int getBankAmount(int bankId) throws SQLException {
         Connection connection = dataSource.getConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("DELETE FROM BANK_ACCOUNT;");
-        statement.execute("DELETE FROM INSURANCE_ACCOUNT;");
-        statement.close();
+        PreparedStatement selectStatement = connection.prepareStatement("SELECT BANK_AMOUNT FROM BANK_ACCOUNT WHERE BANK_ID = ?");
+        selectStatement.setInt(1, bankId);
+        ResultSet resultSet = selectStatement.executeQuery();
+        resultSet.next();
+        int amount = resultSet.getInt(1);
+        resultSet.close();
+        selectStatement.close();
         connection.close();
+        return amount;
     }
+
+    protected int getInsuranceAmount(int insuranceId) throws SQLException {
+        Connection connection = dataSource.getConnection();
+        PreparedStatement selectStatement = connection.prepareStatement("SELECT INSURANCE_AMOUNT FROM INSURANCE_ACCOUNT WHERE INSURANCE_ID = ?");
+        selectStatement.setInt(1, insuranceId);
+        ResultSet resultSet = selectStatement.executeQuery();
+        resultSet.next();
+        int amount = resultSet.getInt(1);
+        resultSet.close();
+        selectStatement.close();
+        connection.close();
+        return amount;
+    }
+
 }
