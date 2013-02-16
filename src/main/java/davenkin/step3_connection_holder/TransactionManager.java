@@ -42,7 +42,6 @@ public class TransactionManager
     public final void close()
     {
         Connection connection = null;
-        int connectionId;
         try
         {
             connection = getConnection();
