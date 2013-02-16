@@ -27,7 +27,7 @@ public class UglyBankServiceTest extends TestFixture{
 
         bankService.transfer(1111, 2222,200);
 
-        assertEquals(800,getBankAmount(1111));
+        assertEquals(800, getBankAmount(1111));
         assertEquals(1200, getInsuranceAmount(2222));
     }
 

@@ -12,14 +12,17 @@ import java.sql.*;
  * Time: 10:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TestFixture {
+public class TestFixture
+{
 
     protected final BasicDataSource dataSource = DataSourceUtils.createDataSource();
 
     @Before
-    public void setUp() throws SQLException {
+    public void setUp() throws SQLException
+    {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
+
         statement.execute("DROP TABLE BANK_ACCOUNT IF EXISTS");
         statement.execute("DROP TABLE INSURANCE_ACCOUNT IF EXISTS");
         statement.execute("CREATE TABLE BANK_ACCOUNT (\n" +
@@ -33,16 +36,16 @@ public class TestFixture {
                 "INSURANCE_AMOUNT INT,\n" +
                 "PRIMARY KEY(INSURANCE_ID)\n" +
                 ");");
-        statement.execute("DELETE FROM BANK_ACCOUNT;");
-        statement.execute("DELETE FROM INSURANCE_ACCOUNT;");
 
         statement.execute("INSERT INTO BANK_ACCOUNT VALUES (1111, 1000);");
         statement.execute("INSERT INTO INSURANCE_ACCOUNT VALUES (2222, 1000);");
+
         statement.close();
         connection.close();
     }
 
-    protected int getBankAmount(int bankId) throws SQLException {
+    protected int getBankAmount(int bankId) throws SQLException
+    {
         Connection connection = dataSource.getConnection();
         PreparedStatement selectStatement = connection.prepareStatement("SELECT BANK_AMOUNT FROM BANK_ACCOUNT WHERE BANK_ID = ?");
         selectStatement.setInt(1, bankId);
@@ -55,7 +58,8 @@ public class TestFixture {
         return amount;
     }
 
-    protected int getInsuranceAmount(int insuranceId) throws SQLException {
+    protected int getInsuranceAmount(int insuranceId) throws SQLException
+    {
         Connection connection = dataSource.getConnection();
         PreparedStatement selectStatement = connection.prepareStatement("SELECT INSURANCE_AMOUNT FROM INSURANCE_ACCOUNT WHERE INSURANCE_ID = ?");
         selectStatement.setInt(1, insuranceId);
