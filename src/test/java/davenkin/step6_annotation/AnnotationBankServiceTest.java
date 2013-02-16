@@ -1,7 +1,7 @@
 package davenkin.step6_annotation;
 
+import davenkin.BankFixture;
 import davenkin.BankService;
-import davenkin.TestFixture;
 import davenkin.step3_connection_holder.TransactionManager;
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 import static junit.framework.Assert.assertEquals;
 
-public class AnnotationBankServiceTest extends TestFixture
+public class AnnotationBankServiceTest extends BankFixture
 {
     @Test
     public void transferSuccess() throws SQLException

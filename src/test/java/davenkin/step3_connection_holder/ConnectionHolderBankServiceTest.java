@@ -1,13 +1,13 @@
 package davenkin.step3_connection_holder;
 
-import davenkin.TestFixture;
+import davenkin.BankFixture;
 import org.junit.Test;
 
 import java.sql.SQLException;
 
 import static junit.framework.Assert.assertEquals;
 
-public class ConnectionHolderBankServiceTest extends TestFixture
+public class ConnectionHolderBankServiceTest extends BankFixture
 {
 
     @Test

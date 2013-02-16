@@ -12,7 +12,7 @@ import java.sql.*;
  * Time: 10:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TestFixture
+public class BankFixture
 {
 
     protected final DataSource dataSource = DataSourceFactory.createDataSource();

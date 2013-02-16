@@ -1,6 +1,6 @@
 package davenkin.step2_ugly;
 
-import davenkin.TestFixture;
+import davenkin.BankFixture;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import static junit.framework.Assert.assertEquals;
  * Time: 8:23 PM
  * To change this template use File | Settings | File Templates.
  */
-public class UglyBankServiceTest extends TestFixture{
+public class UglyBankServiceTest extends BankFixture {
 
     @Test
     public void transferSuccess() throws SQLException {

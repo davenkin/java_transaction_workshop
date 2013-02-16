@@ -1,6 +1,6 @@
 package davenkin.step1_failure;
 
-import davenkin.TestFixture;
+import davenkin.BankFixture;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import static junit.framework.Assert.assertEquals;
  * Time: 10:08 PM
  * To change this template use File | Settings | File Templates.
  */
-public class FailureBankServiceTest extends TestFixture
+public class FailureBankServiceTest extends BankFixture
 {
     @Test
     public void transferSuccess() throws SQLException

@@ -1,13 +1,13 @@
 package davenkin.step4_transaction_template;
 
-import davenkin.TestFixture;
+import davenkin.BankFixture;
 import org.junit.Test;
 
 import java.sql.SQLException;
 
 import static junit.framework.Assert.assertEquals;
 
-public class TransactionTemplateBankServiceTest extends TestFixture
+public class TransactionTemplateBankServiceTest extends BankFixture
 {
     @Test
     public void transferSuccess() throws SQLException
