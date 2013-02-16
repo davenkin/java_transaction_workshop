@@ -39,6 +39,15 @@ public class FailureBankService implements BankService{
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
+        } finally {
+            try
+            {
+                assert connection != null;
+                connection.close();
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 

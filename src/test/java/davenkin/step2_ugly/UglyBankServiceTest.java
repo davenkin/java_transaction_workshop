@@ -1,9 +1,6 @@
 package davenkin.step2_ugly;
 
 import davenkin.TestFixture;
-import davenkin.step1_failure.FailureBankDao;
-import davenkin.step1_failure.FailureBankService;
-import davenkin.step1_failure.FailureInsuranceDao;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -28,10 +25,10 @@ public class UglyBankServiceTest extends TestFixture{
         bankService.setUglyBankDao(failureBankDao);
         bankService.setUglyInsuranceDao(failureInsuranceDao);
 
-        bankService.transfer(1234, 5678,200);
+        bankService.transfer(1111, 2222,200);
 
-        assertEquals(800,getBankAmount(1234));
-        assertEquals(1200, getInsuranceAmount(5678));
+        assertEquals(800,getBankAmount(1111));
+        assertEquals(1200, getInsuranceAmount(2222));
     }
 
     @Test
@@ -43,10 +40,11 @@ public class UglyBankServiceTest extends TestFixture{
         bankService.setUglyBankDao(failureBankDao);
         bankService.setUglyInsuranceDao(failureInsuranceDao);
 
-        bankService.transfer(1234, 56780,200);
+        int toNonExistId = 3333;
+        bankService.transfer(1111, toNonExistId,200);
 
-        assertEquals(1000,getBankAmount(1234));
-        assertEquals(1000, getInsuranceAmount(5678));
+        assertEquals(1000,getBankAmount(1111));
+        assertEquals(1000, getInsuranceAmount(2222));
     }
 
 }

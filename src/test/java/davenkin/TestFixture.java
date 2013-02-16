@@ -20,11 +20,24 @@ public class TestFixture {
     public void setUp() throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
+        statement.execute("DROP TABLE BANK_ACCOUNT IF EXISTS");
+        statement.execute("DROP TABLE INSURANCE_ACCOUNT IF EXISTS");
+        statement.execute("CREATE TABLE BANK_ACCOUNT (\n" +
+                "BANK_ID INT,\n" +
+                "BANK_AMOUNT INT,\n" +
+                "PRIMARY KEY(BANK_ID)\n" +
+                ");");
+
+        statement.execute("CREATE TABLE INSURANCE_ACCOUNT (\n" +
+                "INSURANCE_ID INT,\n" +
+                "INSURANCE_AMOUNT INT,\n" +
+                "PRIMARY KEY(INSURANCE_ID)\n" +
+                ");");
         statement.execute("DELETE FROM BANK_ACCOUNT;");
         statement.execute("DELETE FROM INSURANCE_ACCOUNT;");
 
-        statement.execute("INSERT INTO BANK_ACCOUNT VALUES (1234, 1000);");
-        statement.execute("INSERT INTO INSURANCE_ACCOUNT VALUES (5678, 1000);");
+        statement.execute("INSERT INTO BANK_ACCOUNT VALUES (1111, 1000);");
+        statement.execute("INSERT INTO INSURANCE_ACCOUNT VALUES (2222, 1000);");
         statement.close();
         connection.close();
     }
