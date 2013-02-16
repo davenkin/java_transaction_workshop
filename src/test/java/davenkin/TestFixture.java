@@ -1,8 +1,8 @@
 package davenkin;
 
-import org.apache.commons.dbcp.BasicDataSource;
 import org.junit.Before;
 
+import javax.sql.DataSource;
 import java.sql.*;
 
 /**
@@ -15,7 +15,7 @@ import java.sql.*;
 public class TestFixture
 {
 
-    protected final BasicDataSource dataSource = DataSourceUtils.createDataSource();
+    protected final DataSource dataSource = DataSourceUtils.createDataSource();
 
     @Before
     public void setUp() throws SQLException

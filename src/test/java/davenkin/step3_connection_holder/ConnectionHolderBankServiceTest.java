@@ -1,8 +1,6 @@
 package davenkin.step3_connection_holder;
 
-import davenkin.DataSourceUtils;
 import davenkin.TestFixture;
-import org.apache.commons.dbcp.BasicDataSource;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -15,7 +13,6 @@ public class ConnectionHolderBankServiceTest extends TestFixture
     @Test
     public void transferSuccess() throws SQLException
     {
-        BasicDataSource dataSource = DataSourceUtils.createDataSource();
         ConnectionHolderBankService connectionHolderBankService = new ConnectionHolderBankService(dataSource);
         connectionHolderBankService.transfer(1111, 2222, 200);
 
@@ -27,7 +24,6 @@ public class ConnectionHolderBankServiceTest extends TestFixture
     @Test
     public void transferFailure() throws SQLException
     {
-        BasicDataSource dataSource = DataSourceUtils.createDataSource();
         ConnectionHolderBankService connectionHolderBankService = new ConnectionHolderBankService(dataSource);
 
         int toNonExistId = 3333;

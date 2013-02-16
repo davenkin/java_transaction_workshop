@@ -10,6 +10,8 @@ package davenkin;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
+import javax.sql.DataSource;
+
 public class DataSourceUtils
 {
 
@@ -23,7 +25,7 @@ public class DataSourceUtils
         dataSource.setUrl("jdbc:hsqldb:mem:bank");
     }
 
-    public static BasicDataSource createDataSource()
+    public static DataSource createDataSource()
     {
         return dataSource;
     }
