@@ -22,7 +22,6 @@ public class AnnotationBankServiceTest extends TestFixture
 
         assertEquals(800, getBankAmount(1111));
         assertEquals(1200, getInsuranceAmount(2222));
-
     }
 
     @Test

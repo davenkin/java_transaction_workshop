@@ -15,7 +15,7 @@ import java.sql.*;
 public class TestFixture
 {
 
-    protected final DataSource dataSource = DataSourceUtils.createDataSource();
+    protected final DataSource dataSource = DataSourceFactory.createDataSource();
 
     @Before
     public void setUp() throws SQLException

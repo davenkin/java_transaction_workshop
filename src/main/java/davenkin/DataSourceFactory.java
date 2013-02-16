@@ -12,7 +12,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 
 import javax.sql.DataSource;
 
-public class DataSourceUtils
+public class DataSourceFactory
 {
 
     private static final BasicDataSource dataSource = new BasicDataSource();
@@ -29,6 +29,4 @@ public class DataSourceUtils
     {
         return dataSource;
     }
-
-
 }
